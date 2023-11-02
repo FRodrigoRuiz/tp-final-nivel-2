@@ -105,12 +105,20 @@ namespace presentacion
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            Articulo seleccionado;
-            seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+            try
+            {
+                Articulo seleccionado;
+                seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
 
-            frmAltaArticulo modificar = new frmAltaArticulo(seleccionado);
-            modificar.ShowDialog();
-            cargar();
+                frmAltaArticulo modificar = new frmAltaArticulo(seleccionado);
+                modificar.ShowDialog();
+                cargar();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Por favor seleccione un artículo");
+            }
+            
         }
 
         private void txtFiltro_TextChanged(object sender, EventArgs e)
@@ -172,7 +180,7 @@ namespace presentacion
                 }
                 if (!(soloNumeros(txtFiltroAvanzado.Text)))
                 {
-                    MessageBox.Show("Solo nros para filtrar por un campo numérico...");
+                    MessageBox.Show("Solo puede usar números para filtrar por un campo numérico...");
                     return true;
                 }
             }
@@ -208,6 +216,24 @@ namespace presentacion
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void btnDetalle_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Articulo seleccionado;
+                seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+
+                frmDetalleArticulo detalle = new frmDetalleArticulo(seleccionado);
+
+                detalle.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Por favor seleccione un artículo");
+            }
+            
         }
     }
 }

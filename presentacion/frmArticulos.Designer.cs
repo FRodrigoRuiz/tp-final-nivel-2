@@ -123,6 +123,7 @@
             this.btnDetalle.TabIndex = 6;
             this.btnDetalle.Text = "Detalle";
             this.btnDetalle.UseVisualStyleBackColor = true;
+            this.btnDetalle.Click += new System.EventHandler(this.btnDetalle_Click);
             // 
             // lblCampo
             // 
@@ -218,6 +219,7 @@
             this.Controls.Add(this.pbxArticulo);
             this.Controls.Add(this.dgvArticulos);
             this.Name = "frmArticulos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Articulos";
             this.Load += new System.EventHandler(this.frmArticulos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).EndInit();
